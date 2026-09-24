@@ -1,11 +1,30 @@
-# Registro de verificación
+# Pruebas realizadas
 
-Ejecución local de 24 de septiembre de 2026.
+Se probaron dos formas de usar Nexo: la búsqueda de documentos y la respuesta con el modelo local. Los archivos guardan las preguntas y las respuestas obtenidas el 24 de septiembre de 2026.
 
-- `evaluacion_documental.json`: consultas, fuentes recuperadas y métricas calculadas.
-- `controles_software.txt`: salida de la suite automatizada.
-- `verificacion_http.json`: consulta al servicio HTTP y comprobación de la falta de evidencia.
+## Resultado principal
 
-En el navegador se verificaron la carga de la interfaz, una consulta de phishing con fuentes internas y externas, y la abstención ante la capital de Finlandia. La revisión visual comprobó la legibilidad del formulario y sus controles.
+- 10 preguntas con información disponible: 10 respuestas con citas válidas.
+- 2 preguntas fuera del caso: el sistema indicó que no tenía información suficiente en ambas.
+- Recall@4: 0.95. Se recuperó, en promedio, el 95 % de las fuentes esperadas.
+- MRR: 1.00. La primera fuente relevante apareció en el primer lugar en las diez preguntas.
+- Tiempo mediano de las diez consultas que generaron respuesta: 3.70 segundos, con los modelos ya cargados.
 
-El modo LLM no se ejecutó porque el entorno no dispone de Ollama. Las comprobaciones con respuestas controladas en la suite verifican la lógica del validador, no la calidad de un modelo real. No se presentan resultados de inferencia ni de impacto organizacional.
+Estos resultados no significan que todas las frases sean perfectas. La revisión encontró respuestas que se podrían expresar con más precisión. Ver [revisión de respuestas](revision_respuestas.md).
+
+## Archivos
+
+- `evaluacion_documental.json`: resultados sin generación de texto.
+- `evaluacion_llm.json`: resultados con Qwen3 4B y EmbeddingGemma.
+- `consultas_adicionales.json`: seguimiento de una consulta de VPN, un plazo no definido y solicitudes que el asistente no debe ejecutar.
+- `modelos_locales.json`: versión de Ollama y huellas de los modelos descargados.
+- `controles_software.txt`: salida de las pruebas del programa.
+- `verificacion_http.json`: comprobación del servicio web.
+
+Se usó Ollama 0.34.4 con aceleración en una NVIDIA RTX 5080. Los modelos se ejecutaron en el equipo local. La primera ejecución incluyó la creación del índice y carga de modelos y tardó más; no se mezcló con la medición final con modelos cargados.
+
+## Error encontrado y corregido
+
+Al comienzo, algunas respuestas terminaban antes de tiempo o mezclaban texto de análisis con la respuesta. Se amplió el límite de generación a 2048 tokens, se separó la respuesta final y se agregó una comprobación para no mostrar respuestas cortadas. Las diez respuestas generadas de la evaluación principal tienen entre 8 y 84 palabras.
+
+Falta una revisión independiente de Daniela y pruebas con un grupo mayor de preguntas y usuarios. No se ha medido una reducción real del tiempo de atención de una empresa.

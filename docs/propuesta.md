@@ -1,33 +1,40 @@
-# Propuesta de caso organizacional
+# Propuesta del proyecto
 
-## Organización
-Servicios Andinos: organización contextualizada de servicios profesionales. Se asumen 120 colaboradores, trabajo híbrido y tres personas de soporte. Estos valores delimitan el escenario y no son datos levantados en una empresa real.
+**Daniela Peña · Nexo Soporte**
+
+## Caso elegido
+
+El proyecto usa el caso de Servicios Andinos, una empresa ficticia de servicios profesionales. Para organizar el caso se consideran 120 trabajadores, trabajo híbrido y tres personas de soporte. Estos datos son supuestos, no cifras de una empresa donde se haya hecho un estudio.
 
 ## Problema
-Las instrucciones de soporte se distribuyen entre procedimientos y documentos de seguridad. El colaborador necesita identificar la fuente vigente y distinguir instrucciones generales de reglas internas. La propuesta aborda consultas repetidas sobre contraseñas, VPN, phishing, permisos y MFA. No se dispone de una medición inicial de tiempo de atención.
 
-## Objetivo general
-Implementar un asistente de consulta que recupere evidencia interna y externa y entregue orientación trazable para solicitudes frecuentes de soporte TI.
+Las instrucciones de soporte están repartidas en varios documentos. Una persona que tiene problemas con su cuenta o su VPN debe buscar qué hacer y a quién acudir. Nexo busca reunir esa información en una consulta y mostrar el documento que respalda la respuesta.
 
-## Objetivos medibles
-1. Alcanzar Recall@4 de al menos 0,90 sobre el conjunto inicial de consultas etiquetadas.
-2. Incorporar identificadores de evidencia verificables en todas las respuestas generadas aceptadas por el validador.
-3. Abstenerse en las dos consultas fuera de cobertura del conjunto inicial.
-4. Evaluar en un piloto posterior una reducción del tiempo mediano de búsqueda de al menos 25 %, comparando búsqueda manual y asistida con las mismas tareas. Esta meta no representa un resultado obtenido.
+## Objetivo
 
-## Datos
-Seis políticas internas contextualizadas y dos síntesis externas de NIST/CISA. Metadatos: ID, título, responsable, versión, fecha, tipo y URL. Se calcula SHA-256 sobre el texto. No se incorporan tickets reales, contraseñas ni datos personales.
+Crear un asistente que responda dudas de soporte usando documentos internos y fuentes públicas. La respuesta debe estar relacionada con lo que se encontró y debe permitir revisar su origen.
 
-## Alcance y restricciones
-Consulta de sólo lectura. Modelos locales mediante Ollama. Revisión humana para incidentes y cambios de acceso. Las fuentes externas complementan recomendaciones de seguridad, sin reemplazar los canales internos. El uso institucional requiere autenticación y permisos por documento antes del despliegue.
+Para evaluar el proyecto se plantean estas metas:
 
-## Viabilidad
-La consulta documental funciona con Python estándar. La generación requiere un equipo que pueda ejecutar los modelos seleccionados y almacenamiento para descargarlos. El agente utiliza un flujo acotado de recuperación, generación y verificación, sin delegar acciones administrativas al modelo.
+- Recuperar al menos el 90 % de los documentos esperados en las preguntas de evaluación.
+- Mostrar citas válidas en las respuestas que acepta el sistema.
+- Indicar que falta información en las preguntas fuera del caso.
+- En una etapa posterior, comparar el tiempo de búsqueda manual y con Nexo. La meta propuesta es reducirlo un 25 %, pero aún no se ha medido.
 
-## Revisión docente
-Estado: pendiente de presentación y retroalimentación. No se registra una aprobación que no ha sido proporcionada. Antes del desarrollo definitivo del encargo deben confirmarse el caso y los ajustes con el docente, tal como exige la pauta.
+## Datos disponibles
 
-## Plan de cinco semanas
-Semana 1: delimitación y revisión del caso. Semana 2: corpus y prompts. Semana 3: integración del recuperador y del LLM. Semana 4: evaluación y correcciones. Semana 5: informe, ensayo y entrega. Es una planificación propuesta, no un registro retrospectivo de trabajo.
+Se prepararon seis procedimientos para el caso: contraseña, VPN, phishing, prioridades, alta de usuarios y MFA. Se agregaron dos resúmenes de recomendaciones de NIST y CISA, con sus enlaces originales. No se usan contraseñas ni datos personales reales.
 
-Referencias: fuentes en `corpus.json`, documentación oficial de Ollama y material RA1 del curso.
+## Límites
+
+El asistente sólo entrega orientación. Los cambios de cuentas o permisos siguen a cargo de soporte. El modelo funciona localmente con Ollama. Antes de usarlo con información de una empresa habría que agregar permisos de acceso y revisar quién puede consultar cada documento.
+
+## Plan de trabajo
+
+1. Definir el caso y revisarlo con el docente.
+2. Preparar los documentos y las instrucciones del modelo.
+3. Implementar la búsqueda y la generación de respuestas.
+4. Probar consultas, revisar errores y corregirlos.
+5. Preparar el informe y ensayar la presentación.
+
+La aprobación docente no se ha registrado. También falta confirmar la modalidad individual, ya que la pauta indica trabajo en parejas.

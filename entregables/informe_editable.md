@@ -12,11 +12,10 @@ Diseño de solución con LLM y RAG
 Autora: Daniela Peña. Caso contextualizado: Servicios Andinos.
 Repositorio: github.com/Danipez/Nexo-Soporte
 1. Problema y alcance
-Servicios Andinos representa una organización de servicios profesionales con trabajo híbrido. Se asumen 120
-colaboradores y tres personas de soporte para delimitar el escenario. No se trata de un levantamiento
-realizado en una empresa. El problema abordado es la dispersión de procedimientos de acceso, conectividad
-y seguridad, que dificulta encontrar instrucciones pertinentes y distinguir políticas internas de
-recomendaciones generales.
+Servicios Andinos es una empresa ficticia de servicios profesionales con trabajo híbrido. Para el caso se
+consideran 120 trabajadores y tres personas de soporte. Las instrucciones de acceso, conexión y seguridad
+están repartidas en varios documentos. Nexo busca ayudar a encontrar qué hacer y de dónde sale esa
+información.
 Nexo recupera conocimiento y orienta consultas sobre contraseñas, VPN, phishing, permisos y autenticación
 multifactor (MFA). Su alcance es de sólo lectura: no cambia credenciales, concede accesos ni registra tickets.
 El caso admite datos contextualizados, según las instrucciones del encargo.
@@ -73,12 +72,11 @@ Prompt + LLM local
 Citas / respuesta
 Consulta + historial
 Figura 1. Componentes del flujo RAG. Elaboración para el proyecto.
-El coordinador aplica un flujo acotado: validar, recuperar, generar y verificar. El LLM recibe la evidencia como
-datos y no cuenta con herramientas para modificar sistemas. La rama documental omite embeddings y
-generación y muestra extractos exactos. La arquitectura combina recuperación y generación según el enfoque
-RAG descrito por Lewis et al. (2020).
-La implementación de referencia de las APIs de chat y embeddings corresponde a la documentación de Ollama (s. f.-a, s. f.-b). No se
-ejecutó la inferencia local en el entorno de preparación.
+El programa revisa la pregunta, busca información, genera una respuesta y comprueba sus citas. El modelo
+recibe los fragmentos, pero no puede hacer cambios en sistemas. La consulta documental muestra el texto
+directamente. Esta separación entre búsqueda y respuesta sigue el enfoque RAG de Lewis et al. (2020).
+La implementación de referencia de las APIs de chat y embeddings corresponde a la documentación de Ollama (s. f.-a, s. f.-b). Se ejecutó
+la inferencia local con Ollama 0.34.4, Qwen3 4B y EmbeddingGemma en una NVIDIA RTX 5080.
 
 
 ## Página 3
@@ -129,9 +127,9 @@ Resultados reproducibles y limitaciones
 Daniela Peña · ISY0101 · Evaluación Parcial N°1
 4 / 5
 9. Evaluación ejecutada
-Se ejecutaron 12 consultas: diez con fuentes esperadas y dos fuera de alcance. El conjunto está construido a
-partir del corpus y su tamaño limita la generalización. Se evaluó recuperación documental, sin inferencia de un
-LLM.
+Se probaron 12 consultas: diez con información en los documentos y dos fuera del caso. Se ejecutaron tanto la
+búsqueda documental como el flujo completo con el modelo local. Las preguntas parten del corpus, por lo que
+este resultado no representa cualquier consulta de soporte.
 Métrica
 Resultado
 Interpretación
@@ -144,22 +142,23 @@ Primera fuente relevante en el primer puesto en los diez casos.
 Abstención
 2 de 2
 Sin evidencia en ambas consultas fuera de cobertura.
-Controles de software
-9 aprobados
-Fragmentos, continuidad, entradas y validación de citas.
-Las consultas y resultados completos están en evidencias/evaluacion_documental.json. Recall@4 promedia la
-cobertura por consulta y MRR el inverso del primer rango relevante. La latencia registrada es documental y no
-representa el tiempo de generación del modelo.
+Respuestas LLM
+10 de 10
+Respuestas completas con identificadores de fuente válidos.
+Las respuestas completas están en evidencias/evaluacion_llm.json. Recall@4 mide la recuperación de
+documentos y MRR la posición de la primera fuente relevante. Las diez consultas generativas tuvieron una
+mediana de 3.70 segundos con modelos cargados. También se probaron cuatro consultas de continuidad y
+límites del asistente.
 10. Ejemplo de coherencia
 Consulta: “¿Cómo reporto un correo sospechoso de phishing?”. La evidencia interna INT-03 indica no abrir
 enlaces ni adjuntos y utilizar Reportar phishing o la mesa de ayuda. EXT-01 aporta recomendaciones
-generales del NIST. En modo documental se muestran extractos junto a [INT-03:0] y las demás fuentes
-recuperadas. La respuesta generativa debe revisarse contra estos mismos fragmentos.
+generales del NIST. El modelo respondió con el canal de reporte interno y citó [INT-03:0]. Se comprobó que
+esos pasos aparecen en el documento. No se modificó ninguna cuenta ni se envió un reporte real.
 11. Restricciones y trabajo pendiente
-La evaluación no demuestra reducción real de tickets ni tiempos de atención. Faltan una ejecución del modo
-LLM, revisión humana de fidelidad, consultas adversarias y un conjunto independiente. BM25 puede fallar con
-paráfrasis; el umbral semántico 0,45 debe calibrarse. La protección por prompt no elimina inyección. El
-servidor local no dispone de permisos documentales ni de capacidad multiusuario.
+La evaluación no demuestra una reducción real de tickets ni tiempos de atención. C04 omitió aclarar que el
+plazo es un objetivo, C07 explicó MFA de forma poco clara y A03 amplió demasiado una prohibición. Las citas
+válidas no evitaron estas imprecisiones. Los resultados requieren la revisión de Daniela y más preguntas
+independientes. El servidor tampoco tiene permisos por documento ni uso multiusuario.
 Para medir utilidad, el piloto deberá comparar las mismas tareas con búsqueda manual y asistida, registrar
 tiempos y errores y revisar la satisfacción de usuarios. Para producción se requieren autenticación,
 autorización previa a recuperación y responsables de actualización documental.
@@ -192,7 +191,7 @@ Ollama. (s. f.-b). Generate embeddings. https://docs.ollama.com/api/embed
 davila7. (s. f.). Ingeniería de Soluciones con Inteligencia Artificial [Repositorio de código]. GitHub.
 https://github.com/davila7/Ingenier-a-de-Soluciones-con-Inteligencia-Artificial
 OpenAI. (2026). Codex [Herramienta de asistencia basada en inteligencia artificial]. https://openai.com/codex/
-Entrega: confirmar revisión docente, modalidad individual y ejecución del LLM. El repositorio contiene el material técnico y los espacios
-pendientes de revisión personal, sin atribuir resultados ni experiencias no realizados.
+Entrega: confirmar revisión docente y modalidad individual; completar la reflexión personal. El repositorio contiene el material técnico y los
+espacios pendientes de revisión personal, sin atribuir resultados ni experiencias no realizados.
 
 

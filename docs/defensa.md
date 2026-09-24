@@ -17,7 +17,7 @@ La pauta asigna 20 minutos: 10 de exposición y 10 de preguntas. Expositora: Dan
 ## Demostración reproducible
 1. Ejecutar `python -m nexo --serve` y abrir la interfaz.
 2. Consultar «¿Cómo reporto un correo sospechoso de phishing?». Abrir las fuentes y localizar el procedimiento interno y la referencia externa.
-3. Explicar que el modo documental presenta extractos exactos. Si Ollama está instalado, repetir con LLM y comparar cada afirmación con la evidencia.
+3. Explicar que el modo documental presenta extractos exactos. Repetir con Asistente LLM local y comparar cada afirmación con la evidencia.
 4. Consultar «¿Cuál es la capital de Finlandia?». Mostrar la abstención por ausencia de evidencia.
 5. Reiniciar conversación, preguntar por una falla de VPN y luego «¿Y cuánto demora?». Mostrar la consulta expandida en el JSON descargado.
 6. Abrir `evidencias/evaluacion_documental.json` para demostrar la procedencia de las métricas.
@@ -34,4 +34,4 @@ La pauta asigna 20 minutos: 10 de exposición y 10 de preguntas. Expositora: Dan
 - ¿Por qué usar RRF y cómo calibrarías el umbral semántico?
 - ¿Cuáles fueron tu contribución y tu aprendizaje concreto?
 
-Evitar afirmar que hay integración con tickets, usuarios reales, reducción de tiempos o inferencia ejecutada si no se cuenta con evidencia adicional.
+Evitar afirmar que hay integración con tickets, usuarios reales, reducción de tiempos si no se cuenta con evidencia adicional. El modelo local ya cuenta con resultados en evaluacion_llm.json.

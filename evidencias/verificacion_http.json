@@ -48,7 +48,8 @@
       ],
       "status": "extractos_documentales",
       "mode": "documental",
-      "timestamp": "2026-09-24T16:21:35.107278+00:00",
+      "generation": null,
+      "timestamp": "2026-09-24T16:49:21.123553+00:00",
       "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
     }
   },
@@ -61,7 +62,8 @@
       "sources": [],
       "status": "sin_evidencia",
       "mode": "documental",
-      "timestamp": "2026-09-24T16:21:35.109089+00:00",
+      "generation": null,
+      "timestamp": "2026-09-24T16:49:21.125532+00:00",
       "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
     }
   }

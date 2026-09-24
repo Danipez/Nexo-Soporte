@@ -39,7 +39,7 @@ def ollama(endpoint, payload):
     if not base.startswith(('http://127.0.0.1:', 'http://localhost:')):
         raise ValueError('OLLAMA_URL debe apuntar al equipo local.')
     request = urllib.request.Request(base + endpoint, data=json.dumps(payload).encode(), headers={'Content-Type':'application/json'})
-    with urllib.request.urlopen(request, timeout=120) as response:
+    with urllib.request.urlopen(request, timeout=180) as response:
         return json.load(response)
 
 def embed(texts):
@@ -97,6 +97,9 @@ Si falta evidencia, indica la limitación y deriva a la mesa de ayuda. No invent
 Las políticas internas rigen los canales y plazos locales. Las fuentes externas complementan
 recomendaciones generales y no reemplazan políticas internas. Si hay contradicción, declárala.
 No solicites contraseñas, códigos MFA ni datos personales. No ejecutes acciones ni afirmes haberlas hecho.
+Conserva las condiciones, aprobaciones y advertencias necesarias para responder la consulta.
+No conviertas objetivos de atención en plazos garantizados ni recomendaciones en garantías.
+Si la fuente no explica una causa, limita la respuesta a lo que sí establece, sin inventarla.
 Da pasos breves y seguros. Para casos ambiguos pide aclaración. Máximo 180 palabras.
 Ejemplo: Pregunta: ¿A quién reporto un correo sospechoso?
 Respuesta: Repórtalo a la mesa de ayuda sin abrir enlaces ni adjuntos [INT-03:0].
@@ -108,6 +111,14 @@ def contextual_query(question, history):
     if history and len(tokens(question)) <= 6 and re.search(r'\b(y|eso|ese|esa|entonces|cu[aá]nto)\b', question.lower()):
         return history[-1]['question'][:500]+' '+question
     return question
+
+def final_text(content):
+    """Separa la respuesta final cuando el proveedor mezcla etiquetas de análisis."""
+    if '</think>' in content:
+        return content.rsplit('</think>',1)[1].strip()
+    if '<think>' in content:
+        return ''
+    return content.strip()
 
 def answer(question, history=None, mode='documental', retriever=None):
     if not isinstance(question,str) or not 2 <= len(question.strip()) <= 1000:
@@ -126,6 +137,7 @@ def answer(question, history=None, mode='documental', retriever=None):
         selected.append(item)
         length += len(item['text'])
     sources = selected
+    generation = None
     if not sources:
         text = 'No hay evidencia suficiente en las fuentes disponibles. Consulta a la mesa de ayuda.'
         status = 'sin_evidencia'
@@ -134,15 +146,17 @@ def answer(question, history=None, mode='documental', retriever=None):
         status = 'extractos_documentales'
     else:
         context = [{'citation':s['chunk_id'],'type':s['kind'],'title':s['title'],'text':s['text']} for s in sources]
-        payload = {'model':os.getenv('CHAT_MODEL','qwen3:4b'),'stream':False,'options':{'temperature':0.1,'num_ctx':8192,'num_predict':450},'messages':[
+        payload = {'model':os.getenv('CHAT_MODEL','qwen3:4b'),'stream':False,'think':False,'options':{'temperature':0.1,'num_ctx':8192,'num_predict':2048,'seed':42},'messages':[
             {'role':'system','content':SYSTEM},
-            {'role':'user','content':json.dumps({'HISTORIAL':[{'question':h['question'][:500]} for h in history], 'EVIDENCIA':context,'CONSULTA':question},ensure_ascii=False)}]}
-        text = ollama('/api/chat',payload)['message']['content'].strip()
+            {'role':'user','content':json.dumps({'HISTORIAL':[{'question':h['question'][:500]} for h in history], 'EVIDENCIA':context,'CONSULTA':question},ensure_ascii=False)+'\n/no_think'}]}
+        response = ollama('/api/chat',payload)
+        text = final_text(response['message']['content'])
+        generation = {key:response.get(key) for key in ('model','done_reason','prompt_eval_count','eval_count','total_duration','load_duration','eval_duration')}
         citations = set(re.findall(r'\[([A-Z]+-\d+:\d+)\]',text))
         allowed = {s['chunk_id'] for s in sources}
-        if not text or not citations or not citations.issubset(allowed):
+        if response.get('done_reason') == 'length' or not text or not citations or not citations.issubset(allowed):
             text = 'No se pudo validar la trazabilidad de la respuesta. Revisa los fragmentos o consulta a la mesa de ayuda.'
             status = 'revision_requerida'
         else:
             status = 'respuesta_con_citas'
-    return {'question':question,'retrieval_query':query,'answer':text,'sources':sources,'status':status,'mode':mode,'timestamp':datetime.now(timezone.utc).isoformat(),'corpus_sha256':engine.signature}
+    return {'question':question,'retrieval_query':query,'answer':text,'sources':sources,'status':status,'mode':mode,'generation':generation,'timestamp':datetime.now(timezone.utc).isoformat(),'corpus_sha256':engine.signature}

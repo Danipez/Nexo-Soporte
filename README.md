@@ -1,82 +1,74 @@
 # Nexo Soporte
 
-**Autora:** Daniela Peña · ISY0101
+**Daniela Peña · Ingeniería de Soluciones con IA · ISY0101**
 
-**Repositorio:** https://github.com/Danipez/Nexo-Soporte
+Nexo es un asistente para resolver dudas frecuentes de soporte: problemas con la contraseña, conexión VPN, correos sospechosos y acceso a cuentas. Busca información en los documentos del proyecto y muestra de dónde salió la respuesta.
 
-Asistente de conocimiento para una mesa de ayuda de TI. Recupera procedimientos internos y referencias públicas, muestra el origen de cada fragmento y permite generar una respuesta mediante un LLM local.
+El caso se basa en **Servicios Andinos**, una empresa ficticia. Los procedimientos internos se prepararon para este caso. También se usan recomendaciones públicas de NIST y CISA sobre seguridad.
 
-## Caso y alcance
+## Cómo abrirlo
 
-Servicios Andinos es una organización **contextualizada** de servicios profesionales, con 120 colaboradores y una mesa de ayuda de tres personas como supuestos de diseño. El problema abordado es la dispersión de instrucciones de acceso, VPN y seguridad. Las seis políticas internas se elaboraron para este escenario. Las dos referencias externas son síntesis identificadas de NIST y CISA, con enlaces a los originales.
+En el equipo donde quedó instalado, abre **`iniciar.cmd`**. Después entra a **http://127.0.0.1:8765**.
 
-Nexo orienta y recupera información. No cambia contraseñas, no concede permisos y no crea tickets. No contiene registros reales de trabajadores.
+Hay dos opciones en la pantalla:
 
-## Inicio rápido
+- **Consulta documental:** muestra lo que dicen los documentos, sin generar una respuesta nueva.
+- **Asistente LLM local:** usa el modelo para responder con la información encontrada. Esta es la opción para probar el RAG completo.
 
-Requisito: Python 3.11 o superior. No requiere instalar paquetes Python para ejecutar la aplicación.
+El acceso directo abre el navegador y deja Nexo en segundo plano. Si lo inicias desde una terminal con `python -m nexo --serve`, puedes detenerlo con `Ctrl+C`. Los modelos pueden tardar más en responder la primera vez que se cargan.
 
-```console
-python -m nexo --serve
+## Qué puedes preguntar
+
+Prueba estas consultas y abre las fuentes debajo de cada respuesta:
+
+1. «Olvidé la contraseña, ¿cómo recupero el acceso?»
+2. «¿Qué reviso si falla mi conexión VPN?»
+3. «¿Cómo reporto un correo sospechoso de phishing?»
+4. «¿Cuál es la capital de Finlandia?»
+
+La última pregunta está fuera de los documentos. El asistente debería indicar que no tiene información suficiente. Usa **Nueva conversación** cuando quieras cambiar de tema y borrar el historial.
+
+## Instalarlo en otro equipo
+
+Necesitas Python 3.11 o superior. Para usar el modelo también necesitas Ollama y espacio para descargar varios GB.
+
+En Windows, desde esta carpeta:
+
+```powershell
+.\scripts\instalar_ollama.ps1
+.\iniciar.cmd
 ```
 
-Abre http://127.0.0.1:8765. Selecciona **Consulta documental** para consultar los extractos de las fuentes. Detén el servidor con Ctrl+C.
+El script descarga Ollama desde su distribución oficial. Los programas y modelos quedan en `.runtime`, que no se sube a GitHub.
 
-También puedes consultar desde la terminal:
-
-```console
-python -m nexo "¿Cómo reporto un correo sospechoso de phishing?"
-```
-
-Ejecuta todos los comandos desde la carpeta que contiene este README.
-
-## Generación con LLM y recuperación híbrida
-
-1. Instala Ollama desde https://ollama.com y mantenlo activo.
-2. Descarga los modelos. La descarga y los requisitos de memoria dependen del modelo y del equipo.
+Si ya tienes Ollama instalado:
 
 ```console
 ollama pull qwen3:4b
 ollama pull embeddinggemma
-python -m nexo "¿Cómo recupero mi acceso?" --mode llm
+python -m nexo --serve
 ```
 
-3. En la aplicación selecciona **Asistente LLM local**. La primera consulta genera y guarda embeddings en `.cache/embeddings.json`. Un cambio de corpus o de modelo invalida la caché.
+Para usar sólo la consulta documental basta con `python -m nexo --serve`. No necesitas instalar paquetes de Python.
 
-Configuración opcional en PowerShell:
+## Cómo funciona
 
-```powershell
-$env:CHAT_MODEL = 'qwen3:4b'
-$env:EMBED_MODEL = 'embeddinggemma'
-$env:OLLAMA_URL = 'http://127.0.0.1:11434'
-```
+Primero se divide el texto de los documentos en fragmentos. Luego se buscan los más relacionados con la pregunta. La búsqueda combina palabras clave con embeddings, que son representaciones numéricas del texto. El modelo recibe esos fragmentos y prepara la respuesta con sus citas.
 
-El archivo `.env.example` documenta las variables. La aplicación no carga archivos `.env`. Si Ollama no está disponible, informa el error y permite cambiar a consulta documental, sin presentar extractos como una respuesta generada.
+Se guardan sólo las últimas tres preguntas de la conversación. El botón **Descargar evidencia** permite guardar la consulta, la respuesta y las fuentes en un archivo JSON.
 
-## Flujo
+El [diagrama](docs/arquitectura.svg) y la [explicación técnica](docs/diseno.md) muestran el detalle.
 
-```mermaid
-flowchart TD
- I[Políticas internas versionadas] --> C[Corpus JSON y metadatos]
- E[Síntesis NIST y CISA con URL] --> C
- C --> F[Fragmentos 110 palabras / solapamiento 20]
- F --> B[Índice BM25 en memoria]
- F --> V[Embeddings Ollama y caché local]
- U[Consulta y últimas 3 preguntas] --> Q[Control de entrada y contexto]
- Q --> B
- Q --> V
- B --> R[Fusión RRF / top 4]
- V --> R
- R --> P[Prompt y evidencia hasta 6500 caracteres]
- P --> L[LLM local]
- L --> G[Validación de identificadores citados]
- G --> A[Respuesta / revisión requerida]
- R --> D[Extractos en modo documental]
- A --> T[Fuentes y descarga JSON]
- D --> T
-```
+## Archivos de la entrega
 
-## Validación reproducible
+- [Informe en PDF](entregables/informe_tecnico.pdf) y [texto editable](entregables/informe_editable.md).
+- [Presentación](entregables/presentacion.pptx).
+- [Propuesta del caso](docs/propuesta.md).
+- [Guía para presentar y hacer la demostración](docs/defensa.md).
+- [Resultados de las pruebas](evidencias/README.md).
+- [Revisión de lo que falta antes de entregar](docs/cierre_entrega.md).
+
+## Volver a ejecutar las pruebas
 
 ```console
 python -m unittest discover -s tests -v
@@ -84,32 +76,12 @@ python scripts/evaluar.py
 python scripts/evaluar.py --mode llm
 ```
 
-La última instrucción requiere Ollama y escribe un archivo separado. La evaluación documental incluida obtuvo Recall@4 = 0,95, MRR = 1,00 y abstención correcta en 2 de 2 preguntas fuera de alcance. Son 10 preguntas con documentos esperados y 2 sin evidencia. No constituyen una estimación de desempeño en producción. La fidelidad semántica del LLM requiere revisar las afirmaciones contra las fuentes y **no se midió** en la ejecución incluida.
+El último comando necesita Ollama activo. Los resultados se guardan en `evidencias`. Las pruebas con respuestas controladas revisan partes del programa; las consultas de `evaluacion_llm.json` se ejecutan con el modelo real.
 
-## Entregables
+## Qué falta mejorar
 
-- `entregables/informe_tecnico.pdf`: informe de hasta cinco páginas.
-- `entregables/presentacion.pptx`: apoyo visual para 10 minutos de exposición.
-- `docs/propuesta.md`: propuesta para revisión previa del docente.
-- `docs/defensa.md`: distribución de tiempo y preguntas de preparación.
-- `docs/diseno.md`: especificación, prompts, límites y criterios de evaluación.
-- `docs/matriz_pauta.md`: correspondencia entre IE1-IE9 y archivos.
-- `evidencias/`: resultados verificables de recuperación y controles de software.
-- `docs/cierre_entrega.md`: datos y revisiones que requieren participación del equipo.
+Una cita válida no asegura que toda la respuesta sea correcta. Por eso hay que leer las fuentes, sobre todo cuando se consultan plazos o permisos. El conjunto de preguntas es pequeño y todavía falta probar el sistema con más usuarios y documentos.
 
-## Estructura
+Nexo no cambia contraseñas, no crea cuentas y no abre tickets. Funciona en el equipo local. Antes de usarlo en una empresa habría que agregar acceso por usuario y permisos para los documentos.
 
-`nexo/core.py` contiene fragmentación, BM25, embeddings, fusión y generación. `nexo/web.py` sirve una interfaz local. `data/corpus.json` contiene el conocimiento versionado. `data/consultas.json` declara las consultas y fuentes esperadas. `tests/` cubre controles relevantes y `scripts/evaluar.py` produce las métricas.
-
-## Restricciones conocidas
-
-- La validación de citas comprueba identificadores, no que cada afirmación sea verdadera. Una cita válida puede acompañar una inferencia incorrecta.
-- El buscador léxico puede perder paráfrasis y recuperar coincidencias poco útiles. El umbral semántico de 0,45 necesita calibración con consultas reales.
-- La memoria conserva sólo preguntas en la pestaña durante la sesión. La resolución de referencias es una heurística acotada.
-- No hay autenticación, permisos por documento ni concurrencia para producción. El servidor escucha sólo en el equipo local y no debe exponerse a Internet.
-- Las fuentes externas son síntesis revisadas, no una navegación web en vivo. Deben revisarse antes de actualizar el corpus.
-- El modo LLM está implementado pero no se ejecutó en el entorno de preparación, que no dispone de Ollama.
-
-## Referencia de origen
-
-El diseño retoma los temas de fragmentación, embeddings y evaluación del material del curso [Ingeniería de Soluciones con Inteligencia Artificial](https://github.com/davila7/Ingenier-a-de-Soluciones-con-Inteligencia-Artificial), especialmente RA1/IL1.3 e IL1.4. La implementación de este repositorio es independiente y no copia los notebooks.
+El proyecto toma como referencia los temas de RAG y evaluación del [material del curso](https://github.com/davila7/Ingenier-a-de-Soluciones-con-Inteligencia-Artificial), en RA1/IL1.3 e IL1.4. El código de Nexo se desarrolló por separado.

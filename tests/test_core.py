@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from nexo.core import Retriever, answer, chunks, contextual_query, cosine, load_documents
+from nexo.core import Retriever, answer, chunks, contextual_query, cosine, load_documents, final_text
 
 class CoreTests(unittest.TestCase):
     def test_chunk_overlap_preserves_words(self):
@@ -25,6 +25,15 @@ class CoreTests(unittest.TestCase):
 
     def test_input_limit(self):
         with self.assertRaises(ValueError):answer('x'*1001)
+
+    def test_analysis_is_not_shown(self):
+        self.assertEqual(final_text('análisis interno</think>Respuesta [INT-01:0]'),'Respuesta [INT-01:0]')
+        self.assertEqual(final_text('<think>análisis incompleto'),'')
+
+    def test_truncated_answer_rejected(self):
+        engine=Retriever()
+        with patch.object(engine,'search',return_value=[{**load_documents()[0],'chunk_id':'INT-01:0'}]),patch('nexo.core.ollama',return_value={'done_reason':'length','message':{'content':'Accede al portal [INT-01:0] y luego'}}):
+            self.assertEqual(answer('recuperar contraseña',mode='llm',retriever=engine)['status'],'revision_requerida')
 
     def test_cosine_dimensions(self):
         with self.assertRaises(ValueError):cosine([1],[1,2])
