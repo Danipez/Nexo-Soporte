@@ -57,16 +57,14 @@ Primero se divide el texto de los documentos en fragmentos. Luego se buscan los 
 
 Se guardan sólo las últimas tres preguntas de la conversación. El botón **Descargar evidencia** permite guardar la consulta, la respuesta y las fuentes en un archivo JSON.
 
-El [diagrama](docs/arquitectura.svg) y la [explicación técnica](docs/diseno.md) muestran el detalle.
+El [diagrama](docs/arquitectura.svg) muestra el recorrido de la consulta.
 
-## Archivos de la entrega
+## Archivos del proyecto
 
-- [Informe en PDF](entregables/informe_tecnico.pdf) y [texto editable](entregables/informe_editable.md).
-- [Presentación](entregables/presentacion.pptx).
-- [Propuesta del caso](docs/propuesta.md).
-- [Guía para presentar y hacer la demostración](docs/defensa.md).
-- [Resultados de las pruebas](evidencias/README.md).
-- [Revisión de lo que falta antes de entregar](docs/cierre_entrega.md).
+- [Código del asistente](nexo/).
+- [Documentos de consulta](data/corpus.json).
+- [Diagrama](docs/arquitectura.svg).
+- [Resultados de las pruebas](evidencias/).
 
 ## Volver a ejecutar las pruebas
 

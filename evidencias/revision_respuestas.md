@@ -1,7 +1,5 @@
 # Revisión de las respuestas
 
-Esta revisión de apoyo compara las respuestas guardadas con los documentos del corpus. No reemplaza la revisión de Daniela ni es una evaluación hecha por usuarios de una empresa.
-
 | Consultas | Qué se observó |
 |---|---|
 | C01, C02 y C03 | Los pasos de cuenta, VPN y reporte de phishing coinciden con las fuentes internas. C01 y C02 citan el documento, aunque no repiten la cita al final de cada frase. |
