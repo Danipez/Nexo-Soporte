@@ -1,0 +1,674 @@
+{
+  "summary": {
+    "mode": "documental",
+    "cases": 12,
+    "recall_at_4": 0.95,
+    "mrr": 1.0,
+    "abstention_accuracy": 1,
+    "mean_latency_ms": 0.04,
+    "llm_semantic_faithfulness": "no medida: modo documental",
+    "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+  },
+  "cases": [
+    {
+      "id": "C01",
+      "question": "Olvidé la contraseña, ¿cómo recupero el acceso?",
+      "relevant": [
+        "INT-01"
+      ],
+      "retrieved": [
+        "INT-01",
+        "EXT-02",
+        "INT-05",
+        "INT-06"
+      ],
+      "recall_at_4": 1.0,
+      "reciprocal_rank": 1.0,
+      "abstained": false,
+      "latency_ms": 0.069,
+      "result": {
+        "question": "Olvidé la contraseña, ¿cómo recupero el acceso?",
+        "retrieval_query": "Olvidé la contraseña, ¿cómo recupero el acceso?",
+        "answer": "Para recuperar el acceso por olvido de contraseña, abre una solicitud en el portal de mesa de ayuda y selecciona Acceso a cuenta. El analista debe verificar la identidad mediante el procedimiento interno antes de autorizar el restablecimiento. Nunca entregues tu contraseña ni códigos MFA por chat. Si no puedes entrar al portal, contacta a tu jefatura para que registre la solicitud a tu nombre. La mesa de ayuda atiende de lunes a viernes de 09:00 a 18:00. Este procedimiento no autoriza al asistente a cambiar contraseñas. [INT-01:0]\n\nCISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso. [EXT-02:0]\n\nEl alta de usuario requiere una solicitud de la jefatura con área, cargo, fecha de incorporación y aplicaciones necesarias. La jefatura debe aprobar cada acceso antes de su asignación. Aplica el principio de mínimo privilegio: sólo permisos necesarios para las funciones del cargo. No se permiten cuentas compartidas. El asistente no aprueba permisos ni crea usuarios. Las solicitudes incompletas vuelven a la jefatura para su corrección. El corpus no define un plazo de aprovisionamiento de cuentas nuevas. [INT-05:0]\n\nSi pierdes el teléfono usado para autenticación MFA, contacta a la mesa de ayuda por medio de tu jefatura. El equipo de identidades verificará tu identidad y gestionará la revocación del dispositivo perdido antes de registrar uno nuevo. No apruebes notificaciones de acceso que no hayas iniciado. No compartas códigos de verificación. El asistente no desactiva MFA ni emite códigos temporales. Si sospechas robo de la cuenta, informa el incidente a Seguridad TI a través de la mesa de ayuda. [INT-06:0]",
+        "sources": [
+          {
+            "id": "INT-01",
+            "title": "Recuperación de contraseña y acceso",
+            "kind": "interna",
+            "owner": "Mesa de ayuda de Servicios Andinos",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "Para recuperar el acceso por olvido de contraseña, abre una solicitud en el portal de mesa de ayuda y selecciona Acceso a cuenta. El analista debe verificar la identidad mediante el procedimiento interno antes de autorizar el restablecimiento. Nunca entregues tu contraseña ni códigos MFA por chat. Si no puedes entrar al portal, contacta a tu jefatura para que registre la solicitud a tu nombre. La mesa de ayuda atiende de lunes a viernes de 09:00 a 18:00. Este procedimiento no autoriza al asistente a cambiar contraseñas.",
+            "chunk_id": "INT-01:0",
+            "sha256": "9c2f1b35e8f387e66e9e365ea0215d1131ba24f7b5eb6a1196ff90af95d4c74f",
+            "score": 4.083376
+          },
+          {
+            "id": "EXT-02",
+            "title": "CISA: autenticación multifactor",
+            "kind": "externa",
+            "owner": "Cybersecurity and Infrastructure Security Agency",
+            "version": "síntesis consultada 2026-09-24",
+            "date": "2026-09-24",
+            "url": "https://www.cisa.gov/audiences/small-and-medium-businesses/secure-your-business/require-multifactor-authentication",
+            "text": "CISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso.",
+            "chunk_id": "EXT-02:0",
+            "sha256": "87de20a16307e8d7fcf585b8e4031be5e88670c3677336c49072c0962640c19e",
+            "score": 1.051003
+          },
+          {
+            "id": "INT-05",
+            "title": "Alta de usuario y permisos",
+            "kind": "interna",
+            "owner": "Gestión de identidades",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "El alta de usuario requiere una solicitud de la jefatura con área, cargo, fecha de incorporación y aplicaciones necesarias. La jefatura debe aprobar cada acceso antes de su asignación. Aplica el principio de mínimo privilegio: sólo permisos necesarios para las funciones del cargo. No se permiten cuentas compartidas. El asistente no aprueba permisos ni crea usuarios. Las solicitudes incompletas vuelven a la jefatura para su corrección. El corpus no define un plazo de aprovisionamiento de cuentas nuevas.",
+            "chunk_id": "INT-05:0",
+            "sha256": "bfc96a1396ac44a513fd131c6372a717e261c53361c70baabf40bd5fecbf9f13",
+            "score": 0.722011
+          },
+          {
+            "id": "INT-06",
+            "title": "Pérdida del dispositivo de autenticación MFA",
+            "kind": "interna",
+            "owner": "Gestión de identidades",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "Si pierdes el teléfono usado para autenticación MFA, contacta a la mesa de ayuda por medio de tu jefatura. El equipo de identidades verificará tu identidad y gestionará la revocación del dispositivo perdido antes de registrar uno nuevo. No apruebes notificaciones de acceso que no hayas iniciado. No compartas códigos de verificación. El asistente no desactiva MFA ni emite códigos temporales. Si sospechas robo de la cuenta, informa el incidente a Seguridad TI a través de la mesa de ayuda.",
+            "chunk_id": "INT-06:0",
+            "sha256": "9efac7b01a2dc1d9cc06d9f1b6f6f3d0a27fe3789352009802cc7fb8085a52b6",
+            "score": 0.703971
+          }
+        ],
+        "status": "extractos_documentales",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116433+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    },
+    {
+      "id": "C02",
+      "question": "Mi conexión VPN falla, ¿qué reviso?",
+      "relevant": [
+        "INT-02"
+      ],
+      "retrieved": [
+        "INT-02",
+        "INT-04"
+      ],
+      "recall_at_4": 1.0,
+      "reciprocal_rank": 1.0,
+      "abstained": false,
+      "latency_ms": 0.046,
+      "result": {
+        "question": "Mi conexión VPN falla, ¿qué reviso?",
+        "retrieval_query": "Mi conexión VPN falla, ¿qué reviso?",
+        "answer": "Si falla la conexión VPN, comprueba primero la conexión a Internet y verifica que la fecha y hora del equipo sean correctas. Cierra y vuelve a abrir el cliente VPN corporativo. No desactives el antivirus ni el segundo factor de autenticación. Si el error persiste, registra un ticket con el mensaje de error, la hora del intento y el sistema operativo. Una falla individual de VPN corresponde a prioridad P3, con objetivo de primera respuesta de 8 horas hábiles. Una indisponibilidad general debe evaluarse como incidente crítico por la mesa de ayuda. [INT-02:0]\n\nLa prioridad P1 aplica a interrupción general de un servicio crítico y tiene objetivo de primera respuesta de 30 minutos dentro del horario de soporte. La prioridad P2 corresponde a una interrupción de un área completa y tiene objetivo de 2 horas hábiles. La prioridad P3 corresponde a un problema individual, incluida una falla individual de VPN, con objetivo de 8 horas hábiles. Estos plazos son objetivos de primera respuesta, no compromisos de resolución. La atención ordinaria funciona de lunes a viernes, entre 09:00 y 18:00. Fuera de horario el registro permanece pendiente hasta el siguiente período de atención. [INT-04:0]",
+        "sources": [
+          {
+            "id": "INT-02",
+            "title": "Conexión remota VPN",
+            "kind": "interna",
+            "owner": "Infraestructura TI",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "Si falla la conexión VPN, comprueba primero la conexión a Internet y verifica que la fecha y hora del equipo sean correctas. Cierra y vuelve a abrir el cliente VPN corporativo. No desactives el antivirus ni el segundo factor de autenticación. Si el error persiste, registra un ticket con el mensaje de error, la hora del intento y el sistema operativo. Una falla individual de VPN corresponde a prioridad P3, con objetivo de primera respuesta de 8 horas hábiles. Una indisponibilidad general debe evaluarse como incidente crítico por la mesa de ayuda.",
+            "chunk_id": "INT-02:0",
+            "sha256": "60b5053b2efe3ceab0b63143d8bc89f8d61de7b96c640afdbfd4ad14c4d75b09",
+            "score": 7.075709
+          },
+          {
+            "id": "INT-04",
+            "title": "Prioridades y tiempos de primera respuesta",
+            "kind": "interna",
+            "owner": "Coordinación de soporte",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "La prioridad P1 aplica a interrupción general de un servicio crítico y tiene objetivo de primera respuesta de 30 minutos dentro del horario de soporte. La prioridad P2 corresponde a una interrupción de un área completa y tiene objetivo de 2 horas hábiles. La prioridad P3 corresponde a un problema individual, incluida una falla individual de VPN, con objetivo de 8 horas hábiles. Estos plazos son objetivos de primera respuesta, no compromisos de resolución. La atención ordinaria funciona de lunes a viernes, entre 09:00 y 18:00. Fuera de horario el registro permanece pendiente hasta el siguiente período de atención.",
+            "chunk_id": "INT-04:0",
+            "sha256": "1593719152fd7be29f8ecc9d3c8639504dc24657587dce75848afb13673a8a33",
+            "score": 2.295927
+          }
+        ],
+        "status": "extractos_documentales",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116488+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    },
+    {
+      "id": "C03",
+      "question": "¿Cómo reporto un correo sospechoso de phishing?",
+      "relevant": [
+        "INT-03",
+        "EXT-01"
+      ],
+      "retrieved": [
+        "INT-03",
+        "EXT-02",
+        "EXT-01"
+      ],
+      "recall_at_4": 1.0,
+      "reciprocal_rank": 1.0,
+      "abstained": false,
+      "latency_ms": 0.041,
+      "result": {
+        "question": "¿Cómo reporto un correo sospechoso de phishing?",
+        "retrieval_query": "¿Cómo reporto un correo sospechoso de phishing?",
+        "answer": "Ante un correo sospechoso de phishing, no abras enlaces ni adjuntos y no respondas al remitente. Utiliza la opción Reportar phishing del correo corporativo. Si esa opción no está disponible, registra el incidente en la mesa de ayuda indicando asunto y hora de recepción, sin copiar contraseñas ni información sensible. Si ya ingresaste credenciales en un sitio sospechoso, informa inmediatamente a la mesa de ayuda para activar el procedimiento de contención y recuperación de cuenta. El asistente orienta, pero no bloquea cuentas ni elimina mensajes. [INT-03:0]\n\nCISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso. [EXT-02:0]\n\nLa orientación pública del NIST recomienda revisar cuidadosamente mensajes que solicitan abrir enlaces, descargar archivos, iniciar sesión o proporcionar información sensible. Las solicitudes engañosas pueden utilizar mensajes convincentes y suplantar remitentes conocidos. La autenticación multifactor añade protección a las cuentas. Esta síntesis en español apoya la prevención del phishing y no establece los canales ni los tiempos de atención de Servicios Andinos. [EXT-01:0]",
+        "sources": [
+          {
+            "id": "INT-03",
+            "title": "Reporte de correo sospechoso y phishing",
+            "kind": "interna",
+            "owner": "Seguridad TI",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "Ante un correo sospechoso de phishing, no abras enlaces ni adjuntos y no respondas al remitente. Utiliza la opción Reportar phishing del correo corporativo. Si esa opción no está disponible, registra el incidente en la mesa de ayuda indicando asunto y hora de recepción, sin copiar contraseñas ni información sensible. Si ya ingresaste credenciales en un sitio sospechoso, informa inmediatamente a la mesa de ayuda para activar el procedimiento de contención y recuperación de cuenta. El asistente orienta, pero no bloquea cuentas ni elimina mensajes.",
+            "chunk_id": "INT-03:0",
+            "sha256": "ba0423e886203f76e33de9165c2ac4766b85d4b501f742c1c5fc2d16a5d723d2",
+            "score": 7.374452
+          },
+          {
+            "id": "EXT-02",
+            "title": "CISA: autenticación multifactor",
+            "kind": "externa",
+            "owner": "Cybersecurity and Infrastructure Security Agency",
+            "version": "síntesis consultada 2026-09-24",
+            "date": "2026-09-24",
+            "url": "https://www.cisa.gov/audiences/small-and-medium-businesses/secure-your-business/require-multifactor-authentication",
+            "text": "CISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso.",
+            "chunk_id": "EXT-02:0",
+            "sha256": "87de20a16307e8d7fcf585b8e4031be5e88670c3677336c49072c0962640c19e",
+            "score": 1.432065
+          },
+          {
+            "id": "EXT-01",
+            "title": "NIST: prevención del phishing",
+            "kind": "externa",
+            "owner": "National Institute of Standards and Technology",
+            "version": "síntesis consultada 2026-09-24",
+            "date": "2026-09-24",
+            "url": "https://www.nist.gov/itl/smallbusinesscyber/guidance-topic/phishing",
+            "text": "La orientación pública del NIST recomienda revisar cuidadosamente mensajes que solicitan abrir enlaces, descargar archivos, iniciar sesión o proporcionar información sensible. Las solicitudes engañosas pueden utilizar mensajes convincentes y suplantar remitentes conocidos. La autenticación multifactor añade protección a las cuentas. Esta síntesis en español apoya la prevención del phishing y no establece los canales ni los tiempos de atención de Servicios Andinos.",
+            "chunk_id": "EXT-01:0",
+            "sha256": "b7bc1a74eb39a35bfc466be715c3df48d1510840600b2847174ecdaef8934414",
+            "score": 1.414477
+          }
+        ],
+        "status": "extractos_documentales",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116536+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    },
+    {
+      "id": "C04",
+      "question": "¿Cuál es la primera respuesta para prioridad P1?",
+      "relevant": [
+        "INT-04"
+      ],
+      "retrieved": [
+        "INT-04",
+        "INT-02"
+      ],
+      "recall_at_4": 1.0,
+      "reciprocal_rank": 1.0,
+      "abstained": false,
+      "latency_ms": 0.038,
+      "result": {
+        "question": "¿Cuál es la primera respuesta para prioridad P1?",
+        "retrieval_query": "¿Cuál es la primera respuesta para prioridad P1?",
+        "answer": "La prioridad P1 aplica a interrupción general de un servicio crítico y tiene objetivo de primera respuesta de 30 minutos dentro del horario de soporte. La prioridad P2 corresponde a una interrupción de un área completa y tiene objetivo de 2 horas hábiles. La prioridad P3 corresponde a un problema individual, incluida una falla individual de VPN, con objetivo de 8 horas hábiles. Estos plazos son objetivos de primera respuesta, no compromisos de resolución. La atención ordinaria funciona de lunes a viernes, entre 09:00 y 18:00. Fuera de horario el registro permanece pendiente hasta el siguiente período de atención. [INT-04:0]\n\nSi falla la conexión VPN, comprueba primero la conexión a Internet y verifica que la fecha y hora del equipo sean correctas. Cierra y vuelve a abrir el cliente VPN corporativo. No desactives el antivirus ni el segundo factor de autenticación. Si el error persiste, registra un ticket con el mensaje de error, la hora del intento y el sistema operativo. Una falla individual de VPN corresponde a prioridad P3, con objetivo de primera respuesta de 8 horas hábiles. Una indisponibilidad general debe evaluarse como incidente crítico por la mesa de ayuda. [INT-02:0]",
+        "sources": [
+          {
+            "id": "INT-04",
+            "title": "Prioridades y tiempos de primera respuesta",
+            "kind": "interna",
+            "owner": "Coordinación de soporte",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "La prioridad P1 aplica a interrupción general de un servicio crítico y tiene objetivo de primera respuesta de 30 minutos dentro del horario de soporte. La prioridad P2 corresponde a una interrupción de un área completa y tiene objetivo de 2 horas hábiles. La prioridad P3 corresponde a un problema individual, incluida una falla individual de VPN, con objetivo de 8 horas hábiles. Estos plazos son objetivos de primera respuesta, no compromisos de resolución. La atención ordinaria funciona de lunes a viernes, entre 09:00 y 18:00. Fuera de horario el registro permanece pendiente hasta el siguiente período de atención.",
+            "chunk_id": "INT-04:0",
+            "sha256": "1593719152fd7be29f8ecc9d3c8639504dc24657587dce75848afb13673a8a33",
+            "score": 7.623204
+          },
+          {
+            "id": "INT-02",
+            "title": "Conexión remota VPN",
+            "kind": "interna",
+            "owner": "Infraestructura TI",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "Si falla la conexión VPN, comprueba primero la conexión a Internet y verifica que la fecha y hora del equipo sean correctas. Cierra y vuelve a abrir el cliente VPN corporativo. No desactives el antivirus ni el segundo factor de autenticación. Si el error persiste, registra un ticket con el mensaje de error, la hora del intento y el sistema operativo. Una falla individual de VPN corresponde a prioridad P3, con objetivo de primera respuesta de 8 horas hábiles. Una indisponibilidad general debe evaluarse como incidente crítico por la mesa de ayuda.",
+            "chunk_id": "INT-02:0",
+            "sha256": "60b5053b2efe3ceab0b63143d8bc89f8d61de7b96c640afdbfd4ad14c4d75b09",
+            "score": 3.776984
+          }
+        ],
+        "status": "extractos_documentales",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116577+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    },
+    {
+      "id": "C05",
+      "question": "¿Qué se necesita para el alta de usuario y permisos?",
+      "relevant": [
+        "INT-05"
+      ],
+      "retrieved": [
+        "INT-05"
+      ],
+      "recall_at_4": 1.0,
+      "reciprocal_rank": 1.0,
+      "abstained": false,
+      "latency_ms": 0.037,
+      "result": {
+        "question": "¿Qué se necesita para el alta de usuario y permisos?",
+        "retrieval_query": "¿Qué se necesita para el alta de usuario y permisos?",
+        "answer": "El alta de usuario requiere una solicitud de la jefatura con área, cargo, fecha de incorporación y aplicaciones necesarias. La jefatura debe aprobar cada acceso antes de su asignación. Aplica el principio de mínimo privilegio: sólo permisos necesarios para las funciones del cargo. No se permiten cuentas compartidas. El asistente no aprueba permisos ni crea usuarios. Las solicitudes incompletas vuelven a la jefatura para su corrección. El corpus no define un plazo de aprovisionamiento de cuentas nuevas. [INT-05:0]",
+        "sources": [
+          {
+            "id": "INT-05",
+            "title": "Alta de usuario y permisos",
+            "kind": "interna",
+            "owner": "Gestión de identidades",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "El alta de usuario requiere una solicitud de la jefatura con área, cargo, fecha de incorporación y aplicaciones necesarias. La jefatura debe aprobar cada acceso antes de su asignación. Aplica el principio de mínimo privilegio: sólo permisos necesarios para las funciones del cargo. No se permiten cuentas compartidas. El asistente no aprueba permisos ni crea usuarios. Las solicitudes incompletas vuelven a la jefatura para su corrección. El corpus no define un plazo de aprovisionamiento de cuentas nuevas.",
+            "chunk_id": "INT-05:0",
+            "sha256": "bfc96a1396ac44a513fd131c6372a717e261c53361c70baabf40bd5fecbf9f13",
+            "score": 8.323888
+          }
+        ],
+        "status": "extractos_documentales",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116617+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    },
+    {
+      "id": "C06",
+      "question": "Perdí el teléfono de autenticación MFA",
+      "relevant": [
+        "INT-06"
+      ],
+      "retrieved": [
+        "INT-06",
+        "EXT-02",
+        "INT-01",
+        "EXT-01"
+      ],
+      "recall_at_4": 1.0,
+      "reciprocal_rank": 1.0,
+      "abstained": false,
+      "latency_ms": 0.04,
+      "result": {
+        "question": "Perdí el teléfono de autenticación MFA",
+        "retrieval_query": "Perdí el teléfono de autenticación MFA",
+        "answer": "Si pierdes el teléfono usado para autenticación MFA, contacta a la mesa de ayuda por medio de tu jefatura. El equipo de identidades verificará tu identidad y gestionará la revocación del dispositivo perdido antes de registrar uno nuevo. No apruebes notificaciones de acceso que no hayas iniciado. No compartas códigos de verificación. El asistente no desactiva MFA ni emite códigos temporales. Si sospechas robo de la cuenta, informa el incidente a Seguridad TI a través de la mesa de ayuda. [INT-06:0]\n\nCISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso. [EXT-02:0]\n\nPara recuperar el acceso por olvido de contraseña, abre una solicitud en el portal de mesa de ayuda y selecciona Acceso a cuenta. El analista debe verificar la identidad mediante el procedimiento interno antes de autorizar el restablecimiento. Nunca entregues tu contraseña ni códigos MFA por chat. Si no puedes entrar al portal, contacta a tu jefatura para que registre la solicitud a tu nombre. La mesa de ayuda atiende de lunes a viernes de 09:00 a 18:00. Este procedimiento no autoriza al asistente a cambiar contraseñas. [INT-01:0]\n\nLa orientación pública del NIST recomienda revisar cuidadosamente mensajes que solicitan abrir enlaces, descargar archivos, iniciar sesión o proporcionar información sensible. Las solicitudes engañosas pueden utilizar mensajes convincentes y suplantar remitentes conocidos. La autenticación multifactor añade protección a las cuentas. Esta síntesis en español apoya la prevención del phishing y no establece los canales ni los tiempos de atención de Servicios Andinos. [EXT-01:0]",
+        "sources": [
+          {
+            "id": "INT-06",
+            "title": "Pérdida del dispositivo de autenticación MFA",
+            "kind": "interna",
+            "owner": "Gestión de identidades",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "Si pierdes el teléfono usado para autenticación MFA, contacta a la mesa de ayuda por medio de tu jefatura. El equipo de identidades verificará tu identidad y gestionará la revocación del dispositivo perdido antes de registrar uno nuevo. No apruebes notificaciones de acceso que no hayas iniciado. No compartas códigos de verificación. El asistente no desactiva MFA ni emite códigos temporales. Si sospechas robo de la cuenta, informa el incidente a Seguridad TI a través de la mesa de ayuda.",
+            "chunk_id": "INT-06:0",
+            "sha256": "9efac7b01a2dc1d9cc06d9f1b6f6f3d0a27fe3789352009802cc7fb8085a52b6",
+            "score": 4.408611
+          },
+          {
+            "id": "EXT-02",
+            "title": "CISA: autenticación multifactor",
+            "kind": "externa",
+            "owner": "Cybersecurity and Infrastructure Security Agency",
+            "version": "síntesis consultada 2026-09-24",
+            "date": "2026-09-24",
+            "url": "https://www.cisa.gov/audiences/small-and-medium-businesses/secure-your-business/require-multifactor-authentication",
+            "text": "CISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso.",
+            "chunk_id": "EXT-02:0",
+            "sha256": "87de20a16307e8d7fcf585b8e4031be5e88670c3677336c49072c0962640c19e",
+            "score": 2.078686
+          },
+          {
+            "id": "INT-01",
+            "title": "Recuperación de contraseña y acceso",
+            "kind": "interna",
+            "owner": "Mesa de ayuda de Servicios Andinos",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "Para recuperar el acceso por olvido de contraseña, abre una solicitud en el portal de mesa de ayuda y selecciona Acceso a cuenta. El analista debe verificar la identidad mediante el procedimiento interno antes de autorizar el restablecimiento. Nunca entregues tu contraseña ni códigos MFA por chat. Si no puedes entrar al portal, contacta a tu jefatura para que registre la solicitud a tu nombre. La mesa de ayuda atiende de lunes a viernes de 09:00 a 18:00. Este procedimiento no autoriza al asistente a cambiar contraseñas.",
+            "chunk_id": "INT-01:0",
+            "sha256": "9c2f1b35e8f387e66e9e365ea0215d1131ba24f7b5eb6a1196ff90af95d4c74f",
+            "score": 0.920863
+          },
+          {
+            "id": "EXT-01",
+            "title": "NIST: prevención del phishing",
+            "kind": "externa",
+            "owner": "National Institute of Standards and Technology",
+            "version": "síntesis consultada 2026-09-24",
+            "date": "2026-09-24",
+            "url": "https://www.nist.gov/itl/smallbusinesscyber/guidance-topic/phishing",
+            "text": "La orientación pública del NIST recomienda revisar cuidadosamente mensajes que solicitan abrir enlaces, descargar archivos, iniciar sesión o proporcionar información sensible. Las solicitudes engañosas pueden utilizar mensajes convincentes y suplantar remitentes conocidos. La autenticación multifactor añade protección a las cuentas. Esta síntesis en español apoya la prevención del phishing y no establece los canales ni los tiempos de atención de Servicios Andinos.",
+            "chunk_id": "EXT-01:0",
+            "sha256": "b7bc1a74eb39a35bfc466be715c3df48d1510840600b2847174ecdaef8934414",
+            "score": 0.741
+          }
+        ],
+        "status": "extractos_documentales",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116660+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    },
+    {
+      "id": "C07",
+      "question": "¿Por qué exigir MFA para acceso remoto administrativo?",
+      "relevant": [
+        "EXT-02"
+      ],
+      "retrieved": [
+        "EXT-02",
+        "INT-06",
+        "INT-01",
+        "INT-05"
+      ],
+      "recall_at_4": 1.0,
+      "reciprocal_rank": 1.0,
+      "abstained": false,
+      "latency_ms": 0.045,
+      "result": {
+        "question": "¿Por qué exigir MFA para acceso remoto administrativo?",
+        "retrieval_query": "¿Por qué exigir MFA para acceso remoto administrativo?",
+        "answer": "CISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso. [EXT-02:0]\n\nSi pierdes el teléfono usado para autenticación MFA, contacta a la mesa de ayuda por medio de tu jefatura. El equipo de identidades verificará tu identidad y gestionará la revocación del dispositivo perdido antes de registrar uno nuevo. No apruebes notificaciones de acceso que no hayas iniciado. No compartas códigos de verificación. El asistente no desactiva MFA ni emite códigos temporales. Si sospechas robo de la cuenta, informa el incidente a Seguridad TI a través de la mesa de ayuda. [INT-06:0]\n\nPara recuperar el acceso por olvido de contraseña, abre una solicitud en el portal de mesa de ayuda y selecciona Acceso a cuenta. El analista debe verificar la identidad mediante el procedimiento interno antes de autorizar el restablecimiento. Nunca entregues tu contraseña ni códigos MFA por chat. Si no puedes entrar al portal, contacta a tu jefatura para que registre la solicitud a tu nombre. La mesa de ayuda atiende de lunes a viernes de 09:00 a 18:00. Este procedimiento no autoriza al asistente a cambiar contraseñas. [INT-01:0]\n\nEl alta de usuario requiere una solicitud de la jefatura con área, cargo, fecha de incorporación y aplicaciones necesarias. La jefatura debe aprobar cada acceso antes de su asignación. Aplica el principio de mínimo privilegio: sólo permisos necesarios para las funciones del cargo. No se permiten cuentas compartidas. El asistente no aprueba permisos ni crea usuarios. Las solicitudes incompletas vuelven a la jefatura para su corrección. El corpus no define un plazo de aprovisionamiento de cuentas nuevas. [INT-05:0]",
+        "sources": [
+          {
+            "id": "EXT-02",
+            "title": "CISA: autenticación multifactor",
+            "kind": "externa",
+            "owner": "Cybersecurity and Infrastructure Security Agency",
+            "version": "síntesis consultada 2026-09-24",
+            "date": "2026-09-24",
+            "url": "https://www.cisa.gov/audiences/small-and-medium-businesses/secure-your-business/require-multifactor-authentication",
+            "text": "CISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso.",
+            "chunk_id": "EXT-02:0",
+            "sha256": "87de20a16307e8d7fcf585b8e4031be5e88670c3677336c49072c0962640c19e",
+            "score": 5.977966
+          },
+          {
+            "id": "INT-06",
+            "title": "Pérdida del dispositivo de autenticación MFA",
+            "kind": "interna",
+            "owner": "Gestión de identidades",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "Si pierdes el teléfono usado para autenticación MFA, contacta a la mesa de ayuda por medio de tu jefatura. El equipo de identidades verificará tu identidad y gestionará la revocación del dispositivo perdido antes de registrar uno nuevo. No apruebes notificaciones de acceso que no hayas iniciado. No compartas códigos de verificación. El asistente no desactiva MFA ni emite códigos temporales. Si sospechas robo de la cuenta, informa el incidente a Seguridad TI a través de la mesa de ayuda.",
+            "chunk_id": "INT-06:0",
+            "sha256": "9efac7b01a2dc1d9cc06d9f1b6f6f3d0a27fe3789352009802cc7fb8085a52b6",
+            "score": 2.291636
+          },
+          {
+            "id": "INT-01",
+            "title": "Recuperación de contraseña y acceso",
+            "kind": "interna",
+            "owner": "Mesa de ayuda de Servicios Andinos",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "Para recuperar el acceso por olvido de contraseña, abre una solicitud en el portal de mesa de ayuda y selecciona Acceso a cuenta. El analista debe verificar la identidad mediante el procedimiento interno antes de autorizar el restablecimiento. Nunca entregues tu contraseña ni códigos MFA por chat. Si no puedes entrar al portal, contacta a tu jefatura para que registre la solicitud a tu nombre. La mesa de ayuda atiende de lunes a viernes de 09:00 a 18:00. Este procedimiento no autoriza al asistente a cambiar contraseñas.",
+            "chunk_id": "INT-01:0",
+            "sha256": "9c2f1b35e8f387e66e9e365ea0215d1131ba24f7b5eb6a1196ff90af95d4c74f",
+            "score": 2.059892
+          },
+          {
+            "id": "INT-05",
+            "title": "Alta de usuario y permisos",
+            "kind": "interna",
+            "owner": "Gestión de identidades",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "El alta de usuario requiere una solicitud de la jefatura con área, cargo, fecha de incorporación y aplicaciones necesarias. La jefatura debe aprobar cada acceso antes de su asignación. Aplica el principio de mínimo privilegio: sólo permisos necesarios para las funciones del cargo. No se permiten cuentas compartidas. El asistente no aprueba permisos ni crea usuarios. Las solicitudes incompletas vuelven a la jefatura para su corrección. El corpus no define un plazo de aprovisionamiento de cuentas nuevas.",
+            "chunk_id": "INT-05:0",
+            "sha256": "bfc96a1396ac44a513fd131c6372a717e261c53361c70baabf40bd5fecbf9f13",
+            "score": 0.722011
+          }
+        ],
+        "status": "extractos_documentales",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116708+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    },
+    {
+      "id": "C08",
+      "question": "¿Cuál es el horario de soporte y atención?",
+      "relevant": [
+        "INT-04",
+        "INT-01"
+      ],
+      "retrieved": [
+        "INT-04",
+        "EXT-01"
+      ],
+      "recall_at_4": 0.5,
+      "reciprocal_rank": 1.0,
+      "abstained": false,
+      "latency_ms": 0.032,
+      "result": {
+        "question": "¿Cuál es el horario de soporte y atención?",
+        "retrieval_query": "¿Cuál es el horario de soporte y atención?",
+        "answer": "La prioridad P1 aplica a interrupción general de un servicio crítico y tiene objetivo de primera respuesta de 30 minutos dentro del horario de soporte. La prioridad P2 corresponde a una interrupción de un área completa y tiene objetivo de 2 horas hábiles. La prioridad P3 corresponde a un problema individual, incluida una falla individual de VPN, con objetivo de 8 horas hábiles. Estos plazos son objetivos de primera respuesta, no compromisos de resolución. La atención ordinaria funciona de lunes a viernes, entre 09:00 y 18:00. Fuera de horario el registro permanece pendiente hasta el siguiente período de atención. [INT-04:0]\n\nLa orientación pública del NIST recomienda revisar cuidadosamente mensajes que solicitan abrir enlaces, descargar archivos, iniciar sesión o proporcionar información sensible. Las solicitudes engañosas pueden utilizar mensajes convincentes y suplantar remitentes conocidos. La autenticación multifactor añade protección a las cuentas. Esta síntesis en español apoya la prevención del phishing y no establece los canales ni los tiempos de atención de Servicios Andinos. [EXT-01:0]",
+        "sources": [
+          {
+            "id": "INT-04",
+            "title": "Prioridades y tiempos de primera respuesta",
+            "kind": "interna",
+            "owner": "Coordinación de soporte",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "La prioridad P1 aplica a interrupción general de un servicio crítico y tiene objetivo de primera respuesta de 30 minutos dentro del horario de soporte. La prioridad P2 corresponde a una interrupción de un área completa y tiene objetivo de 2 horas hábiles. La prioridad P3 corresponde a un problema individual, incluida una falla individual de VPN, con objetivo de 8 horas hábiles. Estos plazos son objetivos de primera respuesta, no compromisos de resolución. La atención ordinaria funciona de lunes a viernes, entre 09:00 y 18:00. Fuera de horario el registro permanece pendiente hasta el siguiente período de atención.",
+            "chunk_id": "INT-04:0",
+            "sha256": "1593719152fd7be29f8ecc9d3c8639504dc24657587dce75848afb13673a8a33",
+            "score": 5.659898
+          },
+          {
+            "id": "EXT-01",
+            "title": "NIST: prevención del phishing",
+            "kind": "externa",
+            "owner": "National Institute of Standards and Technology",
+            "version": "síntesis consultada 2026-09-24",
+            "date": "2026-09-24",
+            "url": "https://www.nist.gov/itl/smallbusinesscyber/guidance-topic/phishing",
+            "text": "La orientación pública del NIST recomienda revisar cuidadosamente mensajes que solicitan abrir enlaces, descargar archivos, iniciar sesión o proporcionar información sensible. Las solicitudes engañosas pueden utilizar mensajes convincentes y suplantar remitentes conocidos. La autenticación multifactor añade protección a las cuentas. Esta síntesis en español apoya la prevención del phishing y no establece los canales ni los tiempos de atención de Servicios Andinos.",
+            "chunk_id": "EXT-01:0",
+            "sha256": "b7bc1a74eb39a35bfc466be715c3df48d1510840600b2847174ecdaef8934414",
+            "score": 1.369366
+          }
+        ],
+        "status": "extractos_documentales",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116742+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    },
+    {
+      "id": "C09",
+      "question": "¿La primera respuesta es un compromiso de resolución?",
+      "relevant": [
+        "INT-04"
+      ],
+      "retrieved": [
+        "INT-04",
+        "INT-02"
+      ],
+      "recall_at_4": 1.0,
+      "reciprocal_rank": 1.0,
+      "abstained": false,
+      "latency_ms": 0.038,
+      "result": {
+        "question": "¿La primera respuesta es un compromiso de resolución?",
+        "retrieval_query": "¿La primera respuesta es un compromiso de resolución?",
+        "answer": "La prioridad P1 aplica a interrupción general de un servicio crítico y tiene objetivo de primera respuesta de 30 minutos dentro del horario de soporte. La prioridad P2 corresponde a una interrupción de un área completa y tiene objetivo de 2 horas hábiles. La prioridad P3 corresponde a un problema individual, incluida una falla individual de VPN, con objetivo de 8 horas hábiles. Estos plazos son objetivos de primera respuesta, no compromisos de resolución. La atención ordinaria funciona de lunes a viernes, entre 09:00 y 18:00. Fuera de horario el registro permanece pendiente hasta el siguiente período de atención. [INT-04:0]\n\nSi falla la conexión VPN, comprueba primero la conexión a Internet y verifica que la fecha y hora del equipo sean correctas. Cierra y vuelve a abrir el cliente VPN corporativo. No desactives el antivirus ni el segundo factor de autenticación. Si el error persiste, registra un ticket con el mensaje de error, la hora del intento y el sistema operativo. Una falla individual de VPN corresponde a prioridad P3, con objetivo de primera respuesta de 8 horas hábiles. Una indisponibilidad general debe evaluarse como incidente crítico por la mesa de ayuda. [INT-02:0]",
+        "sources": [
+          {
+            "id": "INT-04",
+            "title": "Prioridades y tiempos de primera respuesta",
+            "kind": "interna",
+            "owner": "Coordinación de soporte",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "La prioridad P1 aplica a interrupción general de un servicio crítico y tiene objetivo de primera respuesta de 30 minutos dentro del horario de soporte. La prioridad P2 corresponde a una interrupción de un área completa y tiene objetivo de 2 horas hábiles. La prioridad P3 corresponde a un problema individual, incluida una falla individual de VPN, con objetivo de 8 horas hábiles. Estos plazos son objetivos de primera respuesta, no compromisos de resolución. La atención ordinaria funciona de lunes a viernes, entre 09:00 y 18:00. Fuera de horario el registro permanece pendiente hasta el siguiente período de atención.",
+            "chunk_id": "INT-04:0",
+            "sha256": "1593719152fd7be29f8ecc9d3c8639504dc24657587dce75848afb13673a8a33",
+            "score": 5.61739
+          },
+          {
+            "id": "INT-02",
+            "title": "Conexión remota VPN",
+            "kind": "interna",
+            "owner": "Infraestructura TI",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "Si falla la conexión VPN, comprueba primero la conexión a Internet y verifica que la fecha y hora del equipo sean correctas. Cierra y vuelve a abrir el cliente VPN corporativo. No desactives el antivirus ni el segundo factor de autenticación. Si el error persiste, registra un ticket con el mensaje de error, la hora del intento y el sistema operativo. Una falla individual de VPN corresponde a prioridad P3, con objetivo de primera respuesta de 8 horas hábiles. Una indisponibilidad general debe evaluarse como incidente crítico por la mesa de ayuda.",
+            "chunk_id": "INT-02:0",
+            "sha256": "60b5053b2efe3ceab0b63143d8bc89f8d61de7b96c640afdbfd4ad14c4d75b09",
+            "score": 2.517989
+          }
+        ],
+        "status": "extractos_documentales",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116783+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    },
+    {
+      "id": "C10",
+      "question": "¿Qué recomienda NIST frente al phishing?",
+      "relevant": [
+        "EXT-01"
+      ],
+      "retrieved": [
+        "EXT-01",
+        "EXT-02",
+        "INT-03"
+      ],
+      "recall_at_4": 1.0,
+      "reciprocal_rank": 1.0,
+      "abstained": false,
+      "latency_ms": 0.036,
+      "result": {
+        "question": "¿Qué recomienda NIST frente al phishing?",
+        "retrieval_query": "¿Qué recomienda NIST frente al phishing?",
+        "answer": "La orientación pública del NIST recomienda revisar cuidadosamente mensajes que solicitan abrir enlaces, descargar archivos, iniciar sesión o proporcionar información sensible. Las solicitudes engañosas pueden utilizar mensajes convincentes y suplantar remitentes conocidos. La autenticación multifactor añade protección a las cuentas. Esta síntesis en español apoya la prevención del phishing y no establece los canales ni los tiempos de atención de Servicios Andinos. [EXT-01:0]\n\nCISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso. [EXT-02:0]\n\nAnte un correo sospechoso de phishing, no abras enlaces ni adjuntos y no respondas al remitente. Utiliza la opción Reportar phishing del correo corporativo. Si esa opción no está disponible, registra el incidente en la mesa de ayuda indicando asunto y hora de recepción, sin copiar contraseñas ni información sensible. Si ya ingresaste credenciales en un sitio sospechoso, informa inmediatamente a la mesa de ayuda para activar el procedimiento de contención y recuperación de cuenta. El asistente orienta, pero no bloquea cuentas ni elimina mensajes. [INT-03:0]",
+        "sources": [
+          {
+            "id": "EXT-01",
+            "title": "NIST: prevención del phishing",
+            "kind": "externa",
+            "owner": "National Institute of Standards and Technology",
+            "version": "síntesis consultada 2026-09-24",
+            "date": "2026-09-24",
+            "url": "https://www.nist.gov/itl/smallbusinesscyber/guidance-topic/phishing",
+            "text": "La orientación pública del NIST recomienda revisar cuidadosamente mensajes que solicitan abrir enlaces, descargar archivos, iniciar sesión o proporcionar información sensible. Las solicitudes engañosas pueden utilizar mensajes convincentes y suplantar remitentes conocidos. La autenticación multifactor añade protección a las cuentas. Esta síntesis en español apoya la prevención del phishing y no establece los canales ni los tiempos de atención de Servicios Andinos.",
+            "chunk_id": "EXT-01:0",
+            "sha256": "b7bc1a74eb39a35bfc466be715c3df48d1510840600b2847174ecdaef8934414",
+            "score": 5.46728
+          },
+          {
+            "id": "EXT-02",
+            "title": "CISA: autenticación multifactor",
+            "kind": "externa",
+            "owner": "Cybersecurity and Infrastructure Security Agency",
+            "version": "síntesis consultada 2026-09-24",
+            "date": "2026-09-24",
+            "url": "https://www.cisa.gov/audiences/small-and-medium-businesses/secure-your-business/require-multifactor-authentication",
+            "text": "CISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso.",
+            "chunk_id": "EXT-02:0",
+            "sha256": "87de20a16307e8d7fcf585b8e4031be5e88670c3677336c49072c0962640c19e",
+            "score": 4.775509
+          },
+          {
+            "id": "INT-03",
+            "title": "Reporte de correo sospechoso y phishing",
+            "kind": "interna",
+            "owner": "Seguridad TI",
+            "version": "1.0",
+            "date": "2026-09-24",
+            "url": null,
+            "text": "Ante un correo sospechoso de phishing, no abras enlaces ni adjuntos y no respondas al remitente. Utiliza la opción Reportar phishing del correo corporativo. Si esa opción no está disponible, registra el incidente en la mesa de ayuda indicando asunto y hora de recepción, sin copiar contraseñas ni información sensible. Si ya ingresaste credenciales en un sitio sospechoso, informa inmediatamente a la mesa de ayuda para activar el procedimiento de contención y recuperación de cuenta. El asistente orienta, pero no bloquea cuentas ni elimina mensajes.",
+            "chunk_id": "INT-03:0",
+            "sha256": "ba0423e886203f76e33de9165c2ac4766b85d4b501f742c1c5fc2d16a5d723d2",
+            "score": 1.538188
+          }
+        ],
+        "status": "extractos_documentales",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116821+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    },
+    {
+      "id": "C11",
+      "question": "¿Cuál es la receta del pastel de choclo?",
+      "relevant": [],
+      "retrieved": [],
+      "recall_at_4": null,
+      "reciprocal_rank": null,
+      "abstained": true,
+      "latency_ms": 0.029,
+      "result": {
+        "question": "¿Cuál es la receta del pastel de choclo?",
+        "retrieval_query": "¿Cuál es la receta del pastel de choclo?",
+        "answer": "No hay evidencia suficiente en las fuentes disponibles. Consulta a la mesa de ayuda.",
+        "sources": [],
+        "status": "sin_evidencia",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116852+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    },
+    {
+      "id": "C12",
+      "question": "¿Cuál es la capital de Finlandia?",
+      "relevant": [],
+      "retrieved": [],
+      "recall_at_4": null,
+      "reciprocal_rank": null,
+      "abstained": true,
+      "latency_ms": 0.023,
+      "result": {
+        "question": "¿Cuál es la capital de Finlandia?",
+        "retrieval_query": "¿Cuál es la capital de Finlandia?",
+        "answer": "No hay evidencia suficiente en las fuentes disponibles. Consulta a la mesa de ayuda.",
+        "sources": [],
+        "status": "sin_evidencia",
+        "mode": "documental",
+        "timestamp": "2026-09-24T16:05:13.116877+00:00",
+        "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+      }
+    }
+  ]
+}

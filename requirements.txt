@@ -1,0 +1,2 @@
+# La aplicación usa exclusivamente la biblioteca estándar de Python 3.11+.
+# El modo LLM requiere Ollama instalado y modelos descargados.

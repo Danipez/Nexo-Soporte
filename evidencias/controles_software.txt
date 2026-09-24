@@ -1,0 +1,14 @@
+test_chunk_overlap_preserves_words (test_core.CoreTests.test_chunk_overlap_preserves_words) ... ok
+test_cosine_dimensions (test_core.CoreTests.test_cosine_dimensions) ... ok
+test_external_internal_retrieval (test_core.CoreTests.test_external_internal_retrieval) ... ok
+test_followup (test_core.CoreTests.test_followup) ... ok
+test_input_limit (test_core.CoreTests.test_input_limit) ... ok
+test_invalid_citation_rejected (test_core.CoreTests.test_invalid_citation_rejected) ... ok
+test_missing_citation_rejected (test_core.CoreTests.test_missing_citation_rejected) ... ok
+test_new_topic_does_not_keep_history (test_core.CoreTests.test_new_topic_does_not_keep_history) ... ok
+test_no_evidence (test_core.CoreTests.test_no_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.005s
+
+OK

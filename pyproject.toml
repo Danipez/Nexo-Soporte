@@ -1,0 +1,5 @@
+[project]
+name = "nexo-soporte-rag"
+version = "1.0.0"
+description = "Asistente documental y RAG local para mesa de ayuda TI"
+requires-python = ">=3.11"

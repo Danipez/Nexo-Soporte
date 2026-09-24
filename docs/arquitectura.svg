@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Arquitectura de Nexo Soporte</title><desc id="desc">Ingesta interna y externa, fragmentación, índices léxico y vectorial, consulta contextualizada, recuperación, LLM, validación y fuentes.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#087e85"/></marker><style>text{font-family:Arial,sans-serif;fill:#123544;font-size:18px}.node{fill:#edf4f5;stroke:#087e85;stroke-width:1.5}.edge{fill:none;stroke:#087e85;stroke-width:2;marker-end:url(#arrow)}.label{font-size:15px;fill:#476b78}</style></defs>
+<rect width="1200" height="760" fill="white"/>
+<text x="40" y="48" style="font-size:30px;font-weight:bold">Nexo Soporte · Arquitectura de consulta</text>
+<rect class="node" x="40" y="95" width="220" height="70" rx="6"/><text x="55" y="125">Políticas internas</text><text x="55" y="149">y síntesis NIST / CISA</text>
+<rect class="node" x="350" y="95" width="240" height="70" rx="6"/><text x="365" y="125">Fragmentos 110 / 20</text><text x="365" y="149">ID, versión y SHA-256</text>
+<rect class="node" x="730" y="90" width="220" height="65" rx="6"/><text x="745" y="128">Índice BM25</text>
+<rect class="node" x="730" y="200" width="220" height="65" rx="6"/><text x="745" y="228">Embeddings Ollama</text><text x="745" y="250">Caché por corpus</text>
+<path class="edge" d="M260 130 H350"/><path class="edge" d="M590 122 H730"/><path class="edge" d="M590 145 H650 V233 H730"/>
+<rect class="node" x="40" y="325" width="220" height="75" rx="6"/><text x="55" y="354">Consulta del usuario</text><text x="55" y="380">Últimas 3 preguntas</text>
+<rect class="node" x="350" y="325" width="240" height="75" rx="6"/><text x="365" y="354">Validar y contextualizar</text><text x="365" y="380">Máximo 1000 caracteres</text>
+<rect class="node" x="730" y="325" width="220" height="75" rx="6"/><text x="745" y="354">Recuperar y fusionar</text><text x="745" y="380">RRF, top 4</text>
+<path class="edge" d="M260 362 H350"/><path class="edge" d="M590 362 H730"/>
+<path class="edge" d="M950 122 H1000 V352 H950"/><path class="edge" d="M840 265 V325"/>
+<rect class="node" x="730" y="470" width="220" height="75" rx="6"/><text x="745" y="500">Prompt + LLM local</text><text x="745" y="525">Evidencia delimitada</text>
+<rect class="node" x="350" y="470" width="240" height="75" rx="6"/><text x="365" y="500">Validar IDs citados</text><text x="365" y="525">O derivar a revisión</text>
+<rect class="node" x="40" y="470" width="220" height="75" rx="6"/><text x="55" y="500">Respuesta y fuentes</text><text x="55" y="525">Exportación JSON</text>
+<path class="edge" d="M840 400 V470"/><path class="edge" d="M730 508 H590"/><path class="edge" d="M350 508 H260"/>
+<path class="edge" d="M470 400 V435 H710 V490 H730"/>
+<text class="label" x="490" y="429">Historial para interpretación</text>
+<path class="edge" d="M950 380 H1060 V610 H150 V545"/><text class="label" x="385" y="602">Modo documental: extractos directos sin generación</text>
+<text x="40" y="680">Límites: sin acciones administrativas, sin autenticación multiusuario, uso local.</text>
+<text class="label" x="40" y="712">Las citas comprueban procedencia. La fidelidad de cada afirmación requiere revisión adicional.</text>
+</svg>

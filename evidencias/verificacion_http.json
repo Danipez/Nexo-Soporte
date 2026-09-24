@@ -1,0 +1,68 @@
+[
+  {
+    "http_status": 200,
+    "body": {
+      "question": "¿Cómo reporto un correo sospechoso de phishing?",
+      "retrieval_query": "¿Cómo reporto un correo sospechoso de phishing?",
+      "answer": "Ante un correo sospechoso de phishing, no abras enlaces ni adjuntos y no respondas al remitente. Utiliza la opción Reportar phishing del correo corporativo. Si esa opción no está disponible, registra el incidente en la mesa de ayuda indicando asunto y hora de recepción, sin copiar contraseñas ni información sensible. Si ya ingresaste credenciales en un sitio sospechoso, informa inmediatamente a la mesa de ayuda para activar el procedimiento de contención y recuperación de cuenta. El asistente orienta, pero no bloquea cuentas ni elimina mensajes. [INT-03:0]\n\nCISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso. [EXT-02:0]\n\nLa orientación pública del NIST recomienda revisar cuidadosamente mensajes que solicitan abrir enlaces, descargar archivos, iniciar sesión o proporcionar información sensible. Las solicitudes engañosas pueden utilizar mensajes convincentes y suplantar remitentes conocidos. La autenticación multifactor añade protección a las cuentas. Esta síntesis en español apoya la prevención del phishing y no establece los canales ni los tiempos de atención de Servicios Andinos. [EXT-01:0]",
+      "sources": [
+        {
+          "id": "INT-03",
+          "title": "Reporte de correo sospechoso y phishing",
+          "kind": "interna",
+          "owner": "Seguridad TI",
+          "version": "1.0",
+          "date": "2026-09-24",
+          "url": null,
+          "text": "Ante un correo sospechoso de phishing, no abras enlaces ni adjuntos y no respondas al remitente. Utiliza la opción Reportar phishing del correo corporativo. Si esa opción no está disponible, registra el incidente en la mesa de ayuda indicando asunto y hora de recepción, sin copiar contraseñas ni información sensible. Si ya ingresaste credenciales en un sitio sospechoso, informa inmediatamente a la mesa de ayuda para activar el procedimiento de contención y recuperación de cuenta. El asistente orienta, pero no bloquea cuentas ni elimina mensajes.",
+          "chunk_id": "INT-03:0",
+          "sha256": "ba0423e886203f76e33de9165c2ac4766b85d4b501f742c1c5fc2d16a5d723d2",
+          "score": 7.374452
+        },
+        {
+          "id": "EXT-02",
+          "title": "CISA: autenticación multifactor",
+          "kind": "externa",
+          "owner": "Cybersecurity and Infrastructure Security Agency",
+          "version": "síntesis consultada 2026-09-24",
+          "date": "2026-09-24",
+          "url": "https://www.cisa.gov/audiences/small-and-medium-businesses/secure-your-business/require-multifactor-authentication",
+          "text": "CISA recomienda exigir autenticación multifactor para el acceso remoto a la red y para accesos privilegiados o administrativos. La orientación prioriza mecanismos resistentes al phishing. El cotejo de números puede servir como medida intermedia frente a notificaciones push móviles mientras se avanza hacia MFA resistente al phishing. Esta síntesis es una recomendación externa general y no autoriza excepciones a las políticas internas de acceso.",
+          "chunk_id": "EXT-02:0",
+          "sha256": "87de20a16307e8d7fcf585b8e4031be5e88670c3677336c49072c0962640c19e",
+          "score": 1.432065
+        },
+        {
+          "id": "EXT-01",
+          "title": "NIST: prevención del phishing",
+          "kind": "externa",
+          "owner": "National Institute of Standards and Technology",
+          "version": "síntesis consultada 2026-09-24",
+          "date": "2026-09-24",
+          "url": "https://www.nist.gov/itl/smallbusinesscyber/guidance-topic/phishing",
+          "text": "La orientación pública del NIST recomienda revisar cuidadosamente mensajes que solicitan abrir enlaces, descargar archivos, iniciar sesión o proporcionar información sensible. Las solicitudes engañosas pueden utilizar mensajes convincentes y suplantar remitentes conocidos. La autenticación multifactor añade protección a las cuentas. Esta síntesis en español apoya la prevención del phishing y no establece los canales ni los tiempos de atención de Servicios Andinos.",
+          "chunk_id": "EXT-01:0",
+          "sha256": "b7bc1a74eb39a35bfc466be715c3df48d1510840600b2847174ecdaef8934414",
+          "score": 1.414477
+        }
+      ],
+      "status": "extractos_documentales",
+      "mode": "documental",
+      "timestamp": "2026-09-24T16:21:35.107278+00:00",
+      "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+    }
+  },
+  {
+    "http_status": 200,
+    "body": {
+      "question": "¿Cuál es la capital de Finlandia?",
+      "retrieval_query": "¿Cuál es la capital de Finlandia?",
+      "answer": "No hay evidencia suficiente en las fuentes disponibles. Consulta a la mesa de ayuda.",
+      "sources": [],
+      "status": "sin_evidencia",
+      "mode": "documental",
+      "timestamp": "2026-09-24T16:21:35.109089+00:00",
+      "corpus_sha256": "6eb623ac614ee3ad5d4aee37cfda050d94f9f2614b769490cbeb551ec28abc8f"
+    }
+  }
+]

@@ -1,0 +1,14 @@
+[
+ {"id":"C01","question":"Olvidé la contraseña, ¿cómo recupero el acceso?","relevant":["INT-01"]},
+ {"id":"C02","question":"Mi conexión VPN falla, ¿qué reviso?","relevant":["INT-02"]},
+ {"id":"C03","question":"¿Cómo reporto un correo sospechoso de phishing?","relevant":["INT-03","EXT-01"]},
+ {"id":"C04","question":"¿Cuál es la primera respuesta para prioridad P1?","relevant":["INT-04"]},
+ {"id":"C05","question":"¿Qué se necesita para el alta de usuario y permisos?","relevant":["INT-05"]},
+ {"id":"C06","question":"Perdí el teléfono de autenticación MFA","relevant":["INT-06"]},
+ {"id":"C07","question":"¿Por qué exigir MFA para acceso remoto administrativo?","relevant":["EXT-02"]},
+ {"id":"C08","question":"¿Cuál es el horario de soporte y atención?","relevant":["INT-04","INT-01"]},
+ {"id":"C09","question":"¿La primera respuesta es un compromiso de resolución?","relevant":["INT-04"]},
+ {"id":"C10","question":"¿Qué recomienda NIST frente al phishing?","relevant":["EXT-01"]},
+ {"id":"C11","question":"¿Cuál es la receta del pastel de choclo?","relevant":[]},
+ {"id":"C12","question":"¿Cuál es la capital de Finlandia?","relevant":[]}
+]
