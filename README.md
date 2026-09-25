@@ -1,6 +1,6 @@
 # Nexo Soporte
 
-**Daniela Peña · Ingeniería de Soluciones con IA · ISY0101**
+**Daniela Peña - Mirko Flores· Ingeniería de Soluciones con IA · ISY0101**
 
 Nexo es un asistente para resolver dudas frecuentes de soporte: problemas con la contraseña, conexión VPN, correos sospechosos y acceso a cuentas. Busca información en los documentos del proyecto y muestra de dónde salió la respuesta.
 
